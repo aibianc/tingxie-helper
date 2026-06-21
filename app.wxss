@@ -1,0 +1,170 @@
+page {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  max-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  padding: 20rpx;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-content {
+  padding-bottom: 40rpx;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 10rpx 30rpx rgba(102, 126, 234, 0.2);
+  backdrop-filter: blur(10rpx);
+  transition: box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+
+
+.btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 40rpx;
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 8rpx 20rpx rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+}
+
+
+
+.btn-secondary {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  word-break: break-word;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+  word-break: break-word;
+}
+
+.input {
+  background: #f7f8fa;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto !important;
+  min-height: 88rpx !important;
+  line-height: 1.4 !important;
+}
+
+.input:focus {
+  border-color: #667eea;
+  background: white;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8rpx 20rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  margin-right: 12rpx;
+  margin-bottom: 12rpx;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.mt-20 {
+  margin-top: 20rpx;
+}
+
+.mb-20 {
+  margin-bottom: 20rpx;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: #667eea;
+}
+
+.text-success {
+  color: #10b981;
+}
+
+.text-warning {
+  color: #f59e0b;
+}
+
+.text-danger {
+  color: #ef4444;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6rpx;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 6rpx;
+}
+
+/* 防止内容溢出 */
+view, text, image {
+  box-sizing: border-box;
+}

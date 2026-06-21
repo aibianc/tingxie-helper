@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="card">
+    <view class="form-item">
+      <text class="label">词库名称</text>
+      <input class="input" placeholder="请输入词库名称" value="{{wordbookName}}" bindinput="onNameInput"></input>
+    </view>
+
+    <view class="form-item" wx:if="{{wordbookType === 'chinese'}}">
+      <text class="label">分类</text>
+      <picker mode="selector" range="{{grades}}" value="{{gradeIndex}}" bindchange="onGradeChange">
+        <view class="picker">
+          {{grades[gradeIndex]}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item" wx:if="{{wordbookType === 'chinese'}}">
+      <text class="label">单元</text>
+      <input class="input" placeholder="请输入单元（可选）" value="{{unit}}" bindinput="onUnitInput"></input>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title flex-between">
+      <text>词语列表 ({{words.length}})</text>
+      <button class="btn-small" bindtap="addWord">添加</button>
+    </view>
+
+    <view class="add-form" wx:if="{{showAddForm}}">
+      <input class="input" placeholder="请输入词语" value="{{newWord}}" bindinput="onWordInput"></input>
+      <input class="input mt-20" placeholder="释义（仅英文）" value="{{newDefinition}}" bindinput="onDefinitionInput" wx:if="{{wordbookType === 'english'}}"></input>
+      <view class="add-actions">
+        <button class="btn-tiny btn-secondary" bindtap="cancelAdd">取消</button>
+        <button class="btn-tiny" bindtap="confirmAdd">确定</button>
+      </view>
+    </view>
+
+    <view class="word-list">
+      <view class="word-item" wx:for="{{displayWords}}" wx:for-item="displayItem" wx:key="index">
+        <view class="word-info">
+          <text class="word-text">{{displayItem.word}}</text>
+          <text class="word-definition" wx:if="{{displayItem.definition}}">{{displayItem.definition}}</text>
+        </view>
+        <text class="delete-btn" bindtap="removeWord" data-index="{{displayItem.index}}">×</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-actions">
+    <button class="btn btn-secondary" bindtap="goBack">取消</button>
+    <button class="btn" bindtap="saveWordbook">保存</button>
+  </view>
+</view>

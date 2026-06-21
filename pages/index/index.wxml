@@ -1,0 +1,85 @@
+<view class="container">
+  <view class="header">
+    <view class="header-card">
+      <view class="avatar-container" wx:if="{{userInfo}}">
+        <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      </view>
+      <view class="avatar-container placeholder" wx:else>
+        <text class="avatar-icon">👤</text>
+      </view>
+      <view class="welcome-text">
+        <text class="greeting">{{greeting}}，{{userInfo ? userInfo.nickName : '小朋友'}}</text>
+        <text class="date">{{currentDate}}</text>
+      </view>
+    </view>
+    
+    <view class="stats-card" wx:if="{{medalCount >= 0}}">
+      <view class="stat-item">
+        <text class="stat-number">{{medalCount}}</text>
+        <text class="stat-label">奖牌</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-number">{{dictationCount}}</text>
+        <text class="stat-label">听写</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-number">{{wordbookCount}}</text>
+        <text class="stat-label">词库</text>
+      </view>
+    </view>
+    
+    <view class="title-banner" wx:if="{{userTitle}}">
+      <text class="title-icon">🏆</text>
+      <text class="title-text">{{userTitle}}</text>
+    </view>
+  </view>
+
+  <view class="menu-section">
+    <view class="menu-title">开始听写</view>
+    <view class="menu-grid">
+      <view class="menu-item card" hover-class="card-active" bindtap="goToPinyin">
+        <view class="menu-icon pinyin-icon">
+          <text>🎵</text>
+        </view>
+        <text class="menu-text">拼音听写</text>
+        <text class="menu-desc">声母韵母拼一拼</text>
+      </view>
+      
+      <view class="menu-item card" hover-class="card-active" bindtap="goToChinese">
+        <view class="menu-icon chinese-icon">
+          <text>📝</text>
+        </view>
+        <text class="menu-text">中文听写</text>
+        <text class="menu-desc">汉字词语写一写</text>
+      </view>
+      
+      <view class="menu-item card" hover-class="card-active" bindtap="goToEnglish">
+        <view class="menu-icon english-icon">
+          <text>🌍</text>
+        </view>
+        <text class="menu-text">英文听写</text>
+        <text class="menu-desc">单词发音听一听</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="medal-preview" wx:if="{{recentMedal}}">
+    <view class="medal-card card">
+      <view class="medal-header">
+        <text class="medal-label">🎉 最近获得</text>
+      </view>
+      <view class="medal-content">
+        <view class="medal-emoji">{{recentMedal.emoji}}</view>
+        <view class="medal-info">
+          <text class="medal-name">{{recentMedal.name}}</text>
+          <text class="medal-time">{{recentMedal.timeText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 底部安全区域（TabBar） -->
+<view class="safe-area-bottom"></view>

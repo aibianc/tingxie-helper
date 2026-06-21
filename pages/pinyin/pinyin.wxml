@@ -1,0 +1,121 @@
+<view class="container">
+  <view class="tabs">
+    <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-tab="0">
+      <text>生成音节</text>
+    </view>
+    <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-tab="1">
+      <text>我的词库</text>
+    </view>
+  </view>
+
+  <view class="tab-content" wx:if="{{currentTab === 0}}">
+    <view class="hint-box">
+      <text class="hint-text">{{hintText}}</text>
+    </view>
+
+    <view class="card">
+      <view class="section-title">选择声母</view>
+      <view class="pinyin-grid">
+        <view class="pinyin-item {{selectedShengmu === item ? 'selected' : ''}}" 
+              wx:for="{{shengmu}}" wx:key="*this"
+              bindtap="selectShengmu" data-item="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">选择韵母</view>
+      <view class="pinyin-grid">
+        <view class="pinyin-item {{selectedYunmu === item ? 'selected' : ''}} {{!canSelectYunmu ? 'disabled' : ''}}" 
+              wx:for="{{yunmu}}" wx:key="*this"
+              bindtap="selectYunmu" data-item="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="current-syllable" wx:if="{{currentSyllable}}">
+      <text class="current-syllable-text">{{currentSyllable}}</text>
+      <button class="btn-add" bindtap="addSyllable">添加</button>
+    </view>
+
+    <view class="card" wx:if="{{generatedSyllables.length > 0}}">
+      <view class="section-title flex-between">
+        <text>有效音节 ({{generatedSyllables.length}}个)</text>
+        <view class="action-buttons">
+          <button class="btn-small" bindtap="saveToWordbook">保存词库</button>
+          <button class="btn-small btn-secondary" bindtap="startDictation" data-type="temp">开始听写</button>
+        </view>
+      </view>
+      <view class="syllable-list">
+        <view class="syllable-tag-wrapper" wx:for="{{generatedSyllables}}" wx:key="*this">
+          <text class="syllable-tag">{{item}}</text>
+          <text class="syllable-delete" bindtap="deleteSyllable" data-index="{{index}}">×</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tab-content" wx:if="{{currentTab === 1}}">
+    <view class="preset-section">
+      <view class="preset-header">
+        <text class="preset-title">📦 推荐词库</text>
+        <text class="preset-subtitle">点击快速导入</text>
+      </view>
+      <scroll-view class="preset-scroll" scroll-x="true">
+        <view class="preset-item" wx:for="{{presetWordbooks}}" wx:key="name" bindtap="importPreset" data-preset="{{item}}">
+          <view class="preset-icon">
+            <text>{{item.icon}}</text>
+          </view>
+          <text class="preset-name">{{item.name}}</text>
+          <text class="preset-count">{{item.words.length}}个词</text>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="add-btn" bindtap="showCreateModal">
+      <text class="add-icon">+</text>
+      <text>新建词库</text>
+    </view>
+
+    <view class="wordbook-list" wx:if="{{wordbooks.length > 0}}">
+      <view class="wordbook-item card" wx:for="{{wordbooks}}" wx:key="_id" bindtap="viewWordbook" data-id="{{item._id}}">
+        <view class="wordbook-header">
+          <view class="wordbook-icon pinyin-icon">
+            <text>🎵</text>
+          </view>
+          <view class="wordbook-info">
+            <text class="wordbook-name">{{item.name}}</text>
+            <text class="wordbook-meta">{{item.words.length}}个音节 · {{formatDate(item.createTime)}}</text>
+          </view>
+        </view>
+        
+        <view class="wordbook-actions" catchtap="true">
+          <button class="action-btn primary" bindtap="startDictation" data-type="wordbook" data-id="{{item._id}}">
+            听写
+          </button>
+          <button class="action-btn" bindtap="editWordbook" data-id="{{item._id}}">
+            编辑
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:else>
+      <text class="empty-icon">📚</text>
+      <text class="empty-text">还没有词库，快去创建一个吧！</text>
+    </view>
+  </view>
+
+  <view class="modal" wx:if="{{showCreateModal}}">
+    <view class="modal-content card">
+      <view class="modal-title">创建词库</view>
+      <input class="input" placeholder="请输入词库名称" value="{{newWordbookName}}" bindinput="onNameInput"></input>
+      <view class="modal-actions">
+        <button class="btn btn-secondary" bindtap="hideCreateModal">取消</button>
+        <button class="btn" bindtap="createWordbook">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

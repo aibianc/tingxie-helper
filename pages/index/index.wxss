@@ -1,0 +1,284 @@
+.header {
+  margin-bottom: 40rpx;
+}
+
+.header-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+  border-radius: 32rpx;
+  padding: 40rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 20rpx 40rpx rgba(102, 126, 234, 0.15);
+  margin-bottom: 20rpx;
+}
+
+.avatar-container {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  overflow: hidden;
+  margin-right: 30rpx;
+  border: 6rpx solid #667eea;
+  box-shadow: 0 8rpx 20rpx rgba(102, 126, 234, 0.3);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+}
+
+.welcome-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.date {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.stats-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 10rpx 30rpx rgba(102, 126, 234, 0.1);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 48rpx;
+  font-weight: bold;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 8rpx;
+}
+
+.stat-divider {
+  width: 2rpx;
+  background: #eee;
+}
+
+.title-banner {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  border-radius: 20rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+  box-shadow: 0 8rpx 20rpx rgba(252, 182, 159, 0.3);
+}
+
+.title-icon {
+  font-size: 40rpx;
+  margin-right: 12rpx;
+}
+
+.title-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #d97706;
+}
+
+.menu-section {
+  margin-bottom: 40rpx;
+}
+
+.menu-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 24rpx;
+}
+
+.menu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 40rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200rpx;
+  height: 200rpx;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, transparent 100%);
+  border-radius: 50%;
+  transform: translate(50rpx, -50rpx);
+}
+
+.menu-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50rpx;
+  margin-right: 30rpx;
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.1);
+}
+
+.pinyin-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.chinese-icon {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.english-icon {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.menu-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.menu-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: auto;
+}
+
+.card-active {
+  transform: scale(0.98);
+}
+
+.medal-preview {
+  margin-top: 20rpx;
+}
+
+.medal-card {
+  padding: 30rpx;
+}
+
+.medal-header {
+  margin-bottom: 20rpx;
+}
+
+.medal-label {
+  font-size: 26rpx;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.medal-content {
+  display: flex;
+  align-items: center;
+}
+
+.medal-image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 24rpx;
+}
+
+.medal-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.medal-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.medal-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.medal-emoji {
+  font-size: 60rpx;
+  margin-right: 20rpx;
+}
+
+.avatar-container.placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-icon {
+  font-size: 50rpx;
+}
+
+.quick-access-section {
+  margin-bottom: 40rpx;
+}
+
+.quick-grid {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24rpx;
+  padding: 30rpx 20rpx;
+  box-shadow: 0 10rpx 30rpx rgba(102, 126, 234, 0.1);
+}
+
+.quick-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rpx;
+  transition: all 0.3s ease;
+}
+
+.quick-item:active {
+  transform: scale(0.95);
+}
+
+.quick-icon {
+  font-size: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.quick-label {
+  font-size: 24rpx;
+  color: #666;
+  font-weight: 500;
+}
+
+.safe-area-bottom {
+  height: 40rpx;
+}

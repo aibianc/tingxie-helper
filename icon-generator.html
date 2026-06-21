@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小程序图标生成器</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        h1 { text-align: center; margin-bottom: 40px; }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .icon-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .icon-preview {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        .icon-name {
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        canvas {
+            display: none;
+        }
+        .instructions {
+            background: rgba(255,255,255,0.95);
+            color: #333;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+        .instructions h2 { color: #667eea; }
+    </style>
+</head>
+<body>
+    <h1>🎨 小程序图标生成器</h1>
+    
+    <div class="instructions">
+        <h2>📝 使用说明</h2>
+        <p>1. 点击下方图标卡片的下载按钮</p>
+        <p>2. 将下载的图片保存到项目的 <strong>images/</strong> 目录</p>
+        <p>3. 普通图标（灰色）保存为 <strong>name.png</strong></p>
+        <p>4. 选中图标（彩色）保存为 <strong>name-active.png</strong></p>
+    </div>
+
+    <div class="icon-grid">
+        <div class="icon-card">
+            <div class="icon-preview">🏠</div>
+            <div class="icon-name">首页 (home)</div>
+            <button onclick="downloadIcon('🏠', '#999', 'home')">下载普通</button>
+            <button onclick="downloadIcon('🏠', '#667eea', 'home-active')">下载选中</button>
+        </div>
+        
+        <div class="icon-card">
+            <div class="icon-preview">📚</div>
+            <div class="icon-name">词库 (book)</div>
+            <button onclick="downloadIcon('📚', '#999', 'book')">下载普通</button>
+            <button onclick="downloadIcon('📚', '#f093fb', 'book-active')">下载选中</button>
+        </div>
+        
+        <div class="icon-card">
+            <div class="icon-preview">📋</div>
+            <div class="icon-name">历史 (history)</div>
+            <button onclick="downloadIcon('📋', '#999', 'history')">下载普通</button>
+            <button onclick="downloadIcon('📋', '#4facfe', 'history-active')">下载选中</button>
+        </div>
+        
+        <div class="icon-card">
+            <div class="icon-preview">🏆</div>
+            <div class="icon-name">奖牌 (medal)</div>
+            <button onclick="downloadIcon('🏆', '#999', 'medal')">下载普通</button>
+            <button onclick="downloadIcon('🏆', '#ffd700', 'medal-active')">下载选中</button>
+        </div>
+        
+        <div class="icon-card">
+            <div class="icon-preview">👤</div>
+            <div class="icon-name">我的 (user)</div>
+            <button onclick="downloadIcon('👤', '#999', 'user')">下载普通</button>
+            <button onclick="downloadIcon('👤', '#6c757d', 'user-active')">下载选中</button>
+        </div>
+    </div>
+
+    <canvas id="iconCanvas" width="81" height="81"></canvas>
+
+    <script>
+        function downloadIcon(emoji, color, filename) {
+            const canvas = document.getElementById('iconCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 清空画布
+            ctx.clearRect(0, 0, 81, 81);
+            
+            // 绘制圆形背景
+            ctx.beginPath();
+            ctx.arc(40.5, 40.5, 32, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            
+            // 绘制emoji
+            ctx.font = '48px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(emoji, 40.5, 44);
+            
+            // 下载
+            const link = document.createElement('a');
+            link.download = filename + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>

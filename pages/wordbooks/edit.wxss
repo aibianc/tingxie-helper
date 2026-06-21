@@ -1,0 +1,122 @@
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  display: block;
+ font-size: 28rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.picker {
+  background: #f7f8fa;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.btn-small {
+  padding: 12rpx 24rpx;
+  font-size: 24rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 24rpx;
+  border: none;
+}
+
+.add-form {
+  background: #f9fafb;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.add-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 20rpx;
+  justify-content: flex-end;
+}
+
+.btn-tiny {
+  padding: 10rpx 20rpx;
+  font-size: 22rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20rpx;
+  border: none;
+}
+
+.btn-tiny.btn-secondary {
+  background: #9ca3af;
+}
+
+.word-list {
+  max-height: 600rpx;
+  overflow-y: auto;
+}
+
+.word-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f3f4f6;
+}
+
+.word-item:last-child {
+  border-bottom: none;
+}
+
+.word-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.word-text {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 4rpx;
+}
+
+.word-definition {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.delete-btn {
+  width: 44rpx;
+  height: 44rpx;
+  background: #fee2e2;
+  color: #dc2626;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  line-height: 1;
+}
+
+.bottom-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 40rpx;
+}
+
+.bottom-actions .btn {
+  flex: 1;
+}

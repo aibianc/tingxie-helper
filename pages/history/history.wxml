@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="history-list" wx:if="{{historyList.length > 0}}">
+    <view class="history-item card" wx:for="{{historyList}}" wx:key="_id">
+      <view class="history-header">
+        <view class="history-icon {{item.type}}-icon">
+          <text>{{item.type === 'pinyin' ? '🎵' : item.type === 'chinese' ? '📝' : '🌍'}}</text>
+        </view>
+        <view class="history-info">
+          <text class="history-name">{{item.wordbookName}}</text>
+          <text class="history-time">{{formatTime(item.createTime)}}</text>
+        </view>
+      </view>
+      
+      <view class="history-words">
+        <text class="word-preview" wx:for="{{item.wordPreviewList}}" wx:for-item="wordItem" wx:key="*this">
+          {{wordItem}}
+        </text>
+      </view>
+
+      <view class="history-actions">
+        <button class="btn-small" bindtap="redoDictation" data-item="{{item}}">
+          再听一次
+        </button>
+        <button class="btn-small btn-secondary" bindtap="copyWords" data-words="{{item.words}}">
+          复制
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">还没有听写记录</text>
+  </view>
+</view>

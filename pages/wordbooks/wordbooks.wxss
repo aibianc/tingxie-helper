@@ -1,0 +1,201 @@
+.filter-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16rpx;
+  padding: 8rpx;
+  margin-bottom: 24rpx;
+  overflow-x: auto;
+}
+
+.filter-tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 12rpx;
+  font-size: 26rpx;
+  color: #666;
+  border-radius: 12rpx;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.filter-tab.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.preset-section {
+  margin-bottom: 30rpx;
+}
+
+.preset-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.preset-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: white;
+}
+
+.preset-subtitle {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.preset-scroll {
+  white-space: nowrap;
+}
+
+.preset-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 30rpx 24rpx;
+  margin-right: 16rpx;
+  width: 200rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+}
+
+.preset-item:last-child {
+  margin-right: 0;
+}
+
+.preset-icon {
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
+}
+
+.preset-name {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.preset-count {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.wordbook-item {
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.wordbook-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.wordbook-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.pinyin-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.chinese-icon {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.english-icon {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.wordbook-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wordbook-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.wordbook-meta {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.wordbook-tags {
+  display: flex;
+  gap: 10rpx;
+  margin-bottom: 20rpx;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 6rpx 16rpx;
+  background: #f3f4f6;
+  color: #666;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+.wordbook-actions {
+  display: flex;
+  gap: 12rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f3f4f6;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 16rpx;
+  background: #f3f4f6;
+  color: #666;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  border: none;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.action-btn.danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.7);
+}

@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="header-card card">
+    <view class="wordbook-icon {{wordbook.type}}-icon">
+      <text>{{wordbook.type === 'pinyin' ? '🎵' : wordbook.type === 'chinese' ? '📝' : '🌍'}}</text>
+    </view>
+    <view class="wordbook-info">
+      <text class="wordbook-name">{{wordbook.name}}</text>
+      <text class="wordbook-meta">{{wordbook.words.length}}个词 · {{formatDate(wordbook.createTime)}}</text>
+    </view>
+  </view>
+
+  <view class="words-card card">
+    <view class="card-header">
+      <text class="card-title">词库内容</text>
+      <view class="header-actions">
+        <button class="btn-small" bindtap="copyAllWords">复制全部</button>
+        <button class="btn-small btn-secondary" bindtap="startDictation">开始听写</button>
+      </view>
+    </view>
+
+    <view class="words-list">
+      <view class="word-item" wx:for="{{wordbook.displayWords}}" wx:for-item="displayItem" wx:key="index">
+        <text class="word-text">{{displayItem.word}}</text>
+        <text class="word-definition" wx:if="{{displayItem.definition}}">{{displayItem.definition}}</text>
+        <button class="delete-btn" bindtap="deleteWord" data-index="{{displayItem.index}}">×</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-word-card card">
+    <view class="section-title">添加词语</view>
+    <input class="input" placeholder="请输入词语" value="{{newWord}}" bindinput="onWordInput" />
+    <input class="input mt-20" placeholder="释义（仅英文，可选）" value="{{newDefinition}}" bindinput="onDefinitionInput" wx:if="{{wordbook.type === 'english'}}" />
+    <button class="btn mt-20" bindtap="addWord">添加</button>
+  </view>
+
+  <view class="actions-card card">
+    <view class="action-item" bindtap="editWordbook">
+      <text class="action-icon">✏️</text>
+      <text class="action-text">编辑词库</text>
+    </view>
+    <view class="action-item danger" bindtap="deleteWordbook">
+      <text class="action-icon">🗑️</text>
+      <text class="action-text">删除词库</text>
+    </view>
+  </view>
+</view>

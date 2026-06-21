@@ -1,0 +1,69 @@
+<view class="container">
+  <view class="filter-tabs">
+    <view class="filter-tab {{currentFilter === 'all' ? 'active' : ''}}" bindtap="setFilter" data-filter="all">
+      全部
+    </view>
+    <view class="filter-tab {{currentFilter === 'pinyin' ? 'active' : ''}}" bindtap="setFilter" data-filter="pinyin">
+      拼音
+    </view>
+    <view class="filter-tab {{currentFilter === 'chinese' ? 'active' : ''}}" bindtap="setFilter" data-filter="chinese">
+      中文
+    </view>
+    <view class="filter-tab {{currentFilter === 'english' ? 'active' : ''}}" bindtap="setFilter" data-filter="english">
+      英文
+    </view>
+  </view>
+
+  <view class="preset-section">
+    <view class="preset-header">
+      <text class="preset-title">📦 推荐词库</text>
+      <text class="preset-subtitle">点击快速导入</text>
+    </view>
+    <scroll-view class="preset-scroll" scroll-x="true">
+      <view class="preset-item" wx:for="{{presetWordbooks}}" wx:key="name" bindtap="importPreset" data-preset="{{item}}">
+        <view class="preset-icon">
+          <text>{{item.icon}}</text>
+        </view>
+        <text class="preset-name">{{item.name}}</text>
+        <text class="preset-count">{{item.words.length}}个词</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="wordbook-list" wx:if="{{filteredWordbooks.length > 0}}">
+    <view class="wordbook-item card" wx:for="{{filteredWordbooks}}" wx:key="_id" bindtap="viewWordbook" data-id="{{item._id}}">
+      <view class="wordbook-header">
+        <view class="wordbook-icon {{item.type}}-icon">
+          <text>{{item.type === 'pinyin' ? '🎵' : item.type === 'chinese' ? '📝' : '🌍'}}</text>
+        </view>
+        <view class="wordbook-info">
+          <text class="wordbook-name">{{item.name}}</text>
+          <text class="wordbook-meta">{{item.words.length}}个词语 · {{formatDate(item.createTime)}}</text>
+        </view>
+      </view>
+      
+      <view class="wordbook-tags" wx:if="{{item.grade || item.unit}}">
+        <text class="tag" wx:if="{{item.grade}}">{{item.grade}}</text>
+        <text class="tag" wx:if="{{item.unit}}">{{item.unit}}</text>
+      </view>
+
+      <view class="wordbook-actions" catchtap="true">
+        <button class="action-btn primary" bindtap="startDictation" data-id="{{item._id}}">
+          听写
+        </button>
+        <button class="action-btn" bindtap="editWordbook" data-id="{{item._id}}">
+          编辑
+        </button>
+        <button class="action-btn danger" bindtap="deleteWordbook" data-id="{{item._id}}">
+          删除
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📚</text>
+    <text class="empty-text">还没有词库</text>
+    <text class="empty-hint">试试上面的推荐词库吧！</text>
+  </view>
+</view>

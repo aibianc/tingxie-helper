@@ -1,0 +1,55 @@
+<view class="container">
+  <view class="stats-card card">
+    <view class="stat-number">{{medals.length}}</view>
+    <view class="stat-label">已获得奖牌</view>
+    <view class="title-display" wx:if="{{userTitle}}">
+      <text class="title-icon">👑</text>
+      <text class="title-text">{{userTitle}}</text>
+    </view>
+  </view>
+
+  <view class="medal-summary">
+    <view class="summary-item">
+      <text class="summary-emoji">🎵</text>
+      <text class="summary-count">{{countByType.pinyin || 0}}</text>
+      <text class="summary-label">拼音</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-emoji">📝</text>
+      <text class="summary-count">{{countByType.chinese || 0}}</text>
+      <text class="summary-label">中文</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-emoji">🌍</text>
+      <text class="summary-count">{{countByType.english || 0}}</text>
+      <text class="summary-label">英文</text>
+    </view>
+  </view>
+
+  <view class="next-milestone card" wx:if="{{nextMilestone}}">
+    <view class="milestone-text">
+      再获得 <text class="milestone-highlight">{{nextMilestone.need}}</text> 枚奖牌
+      解锁 <text class="milestone-title">{{nextMilestone.title}}</text>
+    </view>
+    <view class="milestone-bar">
+      <view class="milestone-progress" style="width: {{nextMilestone.progress}}%"></view>
+    </view>
+  </view>
+
+  <view class="medal-list" wx:if="{{medals.length > 0}}">
+    <view class="medal-item card" wx:for="{{medals}}" wx:key="_id">
+      <view class="medal-emoji">{{item.emoji}}</view>
+      <view class="medal-info">
+        <text class="medal-name">{{item.name}}</text>
+        <text class="medal-desc">{{item.wordbookName}}</text>
+        <text class="medal-time">{{formatTime(item.createTime)}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">🏆</text>
+    <text class="empty-text">还没有奖牌</text>
+    <text class="empty-desc">完成一次听写即可获得！</text>
+  </view>
+</view>

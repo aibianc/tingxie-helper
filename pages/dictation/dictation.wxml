@@ -1,0 +1,111 @@
+<view class="container">
+  <view class="setup-card card" wx:if="{{!isPlaying}}">
+    <view class="setup-title">{{wordbookName}}</view>
+    
+    <view class="setup-item">
+      <text class="setup-label">播报次数</text>
+      <view class="counter">
+        <button class="counter-btn" bindtap="decrease" data-key="repeatCount">-</button>
+        <text class="counter-value">{{repeatCount}}</text>
+        <button class="counter-btn" bindtap="increase" data-key="repeatCount">+</button>
+      </view>
+    </view>
+
+    <view class="setup-item">
+      <text class="setup-label">间隔时间(秒)</text>
+      <view class="counter">
+        <button class="counter-btn" bindtap="decrease" data-key="interval">-</button>
+        <text class="counter-value">{{interval}}</text>
+        <button class="counter-btn" bindtap="increase" data-key="interval">+</button>
+      </view>
+    </view>
+
+    <view class="setup-item" wx:if="{{dictationType === 'english'}}">
+      <text class="setup-label">发音类型</text>
+      <view class="accent-selector">
+        <view class="accent-item {{accent === 'en' ? 'active' : ''}}" bindtap="setAccent" data-accent="en">
+          🇬🇧 英式
+        </view>
+        <view class="accent-item {{accent === 'us' ? 'active' : ''}}" bindtap="setAccent" data-accent="us">
+          🇺🇸 美式
+        </view>
+      </view>
+    </view>
+
+    <view class="word-preview">
+      <view class="preview-header">
+        <text>共 {{words.length}} 个词语</text>
+        <text class="toggle-order" bindtap="toggleOrder">
+          {{isRandom ? '随机' : '顺序'}} {{isRandom ? '🔀' : '🔢'}}
+        </text>
+      </view>
+      <view class="preview-list">
+        <text class="preview-word" wx:for="{{displayWords}}" wx:key="*this">{{item}}</text>
+      </view>
+    </view>
+
+    <button class="btn" bindtap="startDictation">开始听写</button>
+  </view>
+
+  <view class="playing-card card" wx:if="{{isPlaying}}">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progress}}%"></view>
+    </view>
+    <view class="progress-text">{{currentIndex + 1}} / {{words.length}}</view>
+
+    <view class="current-word">
+      <text class="word-display">{{currentWord}}</text>
+    </view>
+
+    <view class="play-controls">
+      <button class="control-btn" bindtap="prevWord" disabled="{{currentIndex === 0}}">⏮️</button>
+      <button class="control-btn control-btn-primary" bindtap="repeatWord">🔊</button>
+      <button class="control-btn" bindtap="nextWord" disabled="{{currentIndex === words.length - 1}}">⏭️</button>
+    </view>
+
+    <view class="bottom-buttons">
+      <button class="btn btn-secondary" bindtap="stopDictation">结束听写</button>
+    </view>
+  </view>
+
+  <view class="result-card card" wx:if="{{isFinished}}">
+    <view class="result-header">
+      <text class="result-icon">🎉</text>
+      <text class="result-title">听写完成！</text>
+    </view>
+
+    <view class="result-stats">
+      <view class="stat-item">
+        <text class="stat-value">{{words.length}}</text>
+        <text class="stat-label">词语总数</text>
+      </view>
+    </view>
+
+    <view class="word-review">
+      <view class="review-header">
+        <text>听写内容</text>
+        <button class="btn-small" bindtap="copyWords">复制</button>
+      </view>
+      <view class="review-list">
+        <text class="review-word" wx:for="{{words}}" wx:key="*this">{{index + 1}}. {{item}}</text>
+      </view>
+    </view>
+
+    <view class="result-actions">
+      <button class="btn btn-secondary" bindtap="restart">再听一次</button>
+      <button class="btn" bindtap="goBack">返回</button>
+    </view>
+  </view>
+
+  <view class="medal-modal" wx:if="{{showMedalModal}}">
+    <view class="medal-popup card">
+      <view class="medal-animation">
+        <text class="medal-emoji">{{medalInfo.emoji}}</text>
+      </view>
+      <text class="medal-title">🎉 获得奖牌！</text>
+      <text class="medal-name">{{medalInfo.name}}</text>
+      <text class="medal-desc">{{medalInfo.desc}}</text>
+      <button class="btn" bindtap="closeMedalModal">太棒了！</button>
+    </view>
+  </view>
+</view>

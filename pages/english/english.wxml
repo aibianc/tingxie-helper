@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="tabs">
+    <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-tab="0">
+      <text>创建词库</text>
+    </view>
+    <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-tab="1">
+      <text>我的词库</text>
+    </view>
+  </view>
+
+  <view class="tab-content" wx:if="{{currentTab === 0}}">
+    <view class="card">
+      <view class="form-item">
+        <text class="label">词库名称</text>
+        <input class="input" placeholder="请输入词库名称" value="{{wordbookName}}" bindinput="onNameInput"></input>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title flex-between">
+        <text>添加单词</text>
+        <button class="btn-small" bindtap="addWord">添加</button>
+      </view>
+      <input class="input" placeholder="请输入英文单词" value="{{newWord}}" bindinput="onWordInput"></input>
+      <input class="input mt-20" placeholder="请输入中文释义（可选）" value="{{newDefinition}}" bindinput="onDefinitionInput"></input>
+      
+      <view class="word-list" wx:if="{{words.length > 0}}">
+        <view class="word-item" wx:for="{{words}}" wx:key="word">
+          <view class="word-info">
+            <text class="word-text">{{item.word}}</text>
+            <text class="word-definition" wx:if="{{item.definition}}">{{item.definition}}</text>
+          </view>
+          <text class="delete-btn" bindtap="removeWord" data-index="{{index}}">×</text>
+        </view>
+      </view>
+    </view>
+
+    <button class="btn btn-success" bindtap="saveWordbook" wx:if="{{words.length > 0}}">保存词库</button>
+  </view>
+
+  <view class="tab-content" wx:if="{{currentTab === 1}}">
+    <view class="preset-section">
+      <view class="preset-header">
+        <text class="preset-title">📦 推荐词库</text>
+        <text class="preset-subtitle">点击快速导入</text>
+      </view>
+      <scroll-view class="preset-scroll" scroll-x="true">
+        <view class="preset-item" wx:for="{{presetWordbooks}}" wx:key="name" bindtap="importPreset" data-preset="{{item}}">
+          <view class="preset-icon">
+            <text>{{item.icon}}</text>
+          </view>
+          <text class="preset-name">{{item.name}}</text>
+          <text class="preset-count">{{item.words.length}}个词</text>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="wordbook-list" wx:if="{{wordbooks.length > 0}}">
+      <view class="wordbook-item card" wx:for="{{wordbooks}}" wx:key="_id" bindtap="viewWordbook" data-id="{{item._id}}">
+        <view class="wordbook-header">
+          <view class="wordbook-icon english-icon">
+            <text>🌍</text>
+          </view>
+          <view class="wordbook-info">
+            <text class="wordbook-name">{{item.name}}</text>
+            <text class="wordbook-meta">{{item.words.length}}个单词 · {{formatDate(item.createTime)}}</text>
+          </view>
+        </view>
+        
+        <view class="wordbook-actions" catchtap="true">
+          <button class="action-btn primary" bindtap="startDictation" data-id="{{item._id}}">
+            听写
+          </button>
+          <button class="action-btn" bindtap="editWordbook" data-id="{{item._id}}">
+            编辑
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:else>
+      <text class="empty-icon">📚</text>
+      <text class="empty-text">还没有词库，快去创建一个吧！</text>
+    </view>
+  </view>
+</view>

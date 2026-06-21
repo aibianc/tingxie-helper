@@ -1,0 +1,156 @@
+.header-card {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.wordbook-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  margin-right: 24rpx;
+}
+
+.pinyin-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.chinese-icon {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.english-icon {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.wordbook-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wordbook-name {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.wordbook-meta {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.words-card {
+  margin-bottom: 20rpx;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12rpx;
+}
+
+.words-list {
+  max-height: 600rpx;
+  overflow-y: auto;
+}
+
+.word-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.word-item:last-child {
+  border-bottom: none;
+}
+
+.word-text {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.word-definition {
+  font-size: 24rpx;
+  color: #666;
+  margin-right: 16rpx;
+}
+
+.delete-btn {
+  width: 48rpx;
+  height: 48rpx;
+  background: #fee2e2;
+  color: #dc2626;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  border: none;
+  padding: 0;
+}
+
+.add-word-card {
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.actions-card {
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+}
+
+.action-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 20rpx;
+  border-right: 1rpx solid #f0f0f0;
+}
+
+.action-item:last-child {
+  border-right: none;
+}
+
+.action-item.danger .action-text {
+  color: #dc2626;
+}
+
+.action-icon {
+  font-size: 40rpx;
+  margin-bottom: 12rpx;
+}
+
+.action-text {
+  font-size: 26rpx;
+  color: #666;
+}
